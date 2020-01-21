@@ -22,7 +22,7 @@ import reactor.core.publisher.Mono;
  * @author Alcanzer
  *
  */
-@RestController
+
 public class KafkaController {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(KafkaController.class);
@@ -39,7 +39,7 @@ public class KafkaController {
 	@GetMapping("/topics")
 	public Mono<List<String>> getTopics() {
 		LOGGER.info(operations.getTopics().toString());
-		return Mono.fromSupplier(() -> operations.getTopics());
+		return Mono.fromSupplier(operations::getTopics);
 	}
 	
 	/**

@@ -19,10 +19,10 @@ import reactor.core.publisher.Mono;
 @Configuration
 public class ConsumerService {
 	private static final Logger logger = LoggerFactory.getLogger(ConsumerService.class);
-	
+
 	@Autowired
 	private DatabaseService databaseService;
-	
+
 	/**
 	 * @param evt
 	 */
@@ -32,8 +32,9 @@ public class ConsumerService {
 		try {
 			Mono<Event> result = databaseService.save(evt);
 			logger.info("Event saved: {}", result.thenReturn(true));
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
+
 }

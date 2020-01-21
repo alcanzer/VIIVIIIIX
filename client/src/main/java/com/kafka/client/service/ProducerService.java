@@ -16,13 +16,13 @@ import com.kafka.client.model.Event;
 @Service
 public class ProducerService {
 	private static final Logger logger = LoggerFactory.getLogger(ProducerService.class);
-	
+
 	@Value("${kafka.topicName}")
 	private String topicName;
-	
+
 	@Autowired
 	KafkaTemplate<String, Event> kafkaTemplate;
-	
+
 	/**
 	 * @param evt
 	 */
@@ -30,4 +30,5 @@ public class ProducerService {
 		logger.info("Producer sent: {}", evt.toString());
 		kafkaTemplate.send(topicName, evt);
 	}
+
 }
